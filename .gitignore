@@ -1,4 +1,7 @@
 # gitignore for an emacs config
-*~
-
 auto-save-list/
+lisp/
+elpa/
+
+*~
+ido.last

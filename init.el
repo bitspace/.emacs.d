@@ -25,3 +25,6 @@ There are two things you can do about this warning:
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
+
+;; better-defaults https://github.com/technomancy/better-defaults
+(require 'better-defaults)
