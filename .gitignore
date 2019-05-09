@@ -2,6 +2,7 @@
 auto-save-list/
 lisp/
 elpa/
+themes/
 
 *~
 ido.last
