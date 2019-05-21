@@ -1,11 +1,11 @@
 # gitignore for an emacs config
-auto-save-list/
-backups/
-elpa/
-eshell/
-lisp/
-snippets/
-themes/
+.idea
+auto-save-list
+backups
+elpa
+eshell
+lisp
+snippets
+themes
 
-*~
 ido.last
