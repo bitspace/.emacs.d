@@ -1,7 +1,10 @@
 # gitignore for an emacs config
 auto-save-list/
-lisp/
+backups/
 elpa/
+eshell/
+lisp/
+snippets/
 themes/
 
 *~
