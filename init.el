@@ -5,6 +5,10 @@
   (normal-top-level-add-to-load-path '("."))
   (normal-top-level-add-subdirs-to-load-path))
 
+;; macos native ls doesn't support dired. Also set macos-specific path info. See http://ergoemacs.org/emacs/emacs_env_var_paths.html
+(when (string= system-type "darwin")
+  (setq dired-use-ls-dired nil))
+
 ;; Package.el. This method of toggling between http and https courtesy of https://melpa.org/#/getting-started
 ;; This makes it more portable, as it seems the https link doesn't work in Emacs on Windows.
 (require 'package)
@@ -77,6 +81,11 @@ There are two things you can do about this warning:
 (require 'tramp)
 (setq tramp-default-method "ssh")
 
+;; cache passwords
+(require 'em-tramp)
+(setq password-cache t)
+(setq password-cache-expiry 3600)
+
 ;; helm customizations
 (require 'helm)
 (require 'helm-config)
@@ -118,3 +127,6 @@ There are two things you can do about this warning:
 (helm-autoresize-mode 1)
 
 (helm-mode 1)
+
+;; helm-system-packages: helm-based interface to OS package manager
+(require 'helm-system-packages)
