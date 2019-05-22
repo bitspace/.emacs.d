@@ -1,4 +1,22 @@
 ;;;; emacs init
+;;;; Borrowed/cribbed largely from DOOM Emacs. Leaving out the vim keybindings and trying to stick only with
+;;;; extensions I know about and need.
+
+;; Some useful constants
+(defconst EMACS26+ (> emacs-major-version 25))
+(defconst EMACS27+ (> emacs-major-version 26))
+
+(defconst IS-MAC (eq system-type 'darwin))
+(defconst IS-LINUX (eq system-type 'gnu/linux))
+(defconst IS-WINDOWS (eq system-type '(cygwin windows-nt ms-dos)))
+(defconst IS-BSD (or IS-MAC (eq system-type 'berkeley-unix)))
+
+;; Ensure emacs is running out of this file's directory
+(setq user-emacs-directory (file-name-directory load-file-name))
+
+(defvar cjw-emacs-dir
+  (eval-when-compile (file-truename user-emacs-directory))
+  "The path to this emacs.d directory. Must end in a slash.")
 
 ;; add local lisp dir to load path
 (let ((default-directory "~/.emacs.d/lisp/"))
@@ -42,7 +60,7 @@ There are two things you can do about this warning:
 ;; soft-wrap everywhere
 (global-visual-line-mode 1)
 
-;; Load Darkula theme
+;; Load dracula theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'dracula t)
 
