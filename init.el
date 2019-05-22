@@ -1,4 +1,22 @@
 ;;;; emacs init
+;;;; Borrowed/cribbed largely from DOOM Emacs. Leaving out the vim keybindings and trying to stick only with
+;;;; extensions I know about and need.
+
+;; Some useful constants
+(defconst EMACS26+ (> emacs-major-version 25))
+(defconst EMACS27+ (> emacs-major-version 26))
+
+(defconst IS-MAC (eq system-type 'darwin))
+(defconst IS-LINUX (eq system-type 'gnu/linux))
+(defconst IS-WINDOWS (eq system-type '(cygwin windows-nt ms-dos)))
+(defconst IS-BSD (or IS-MAC (eq system-type 'berkeley-unix)))
+
+;; Ensure emacs is running out of this file's directory
+(setq user-emacs-directory (file-name-directory load-file-name))
+
+(defvar cjw-emacs-dir
+  (eval-when-compile (file-truename user-emacs-directory))
+  "The path to this emacs.d directory. Must end in a slash.")
 
 ;; add local lisp dir to load path
 (let ((default-directory "~/.emacs.d/lisp/"))
@@ -35,9 +53,12 @@ There are two things you can do about this warning:
 ;; Turn on line numbers everywhere
 (global-linum-mode 1)
 
-;; Load Darkula theme
+;; Turn on soft line wraps
+(global-visual-line-mode 1)
+
+;; Load theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'Darkula t)
+(load-theme 'dracula t)
 
 ;; Change default font
 (set-face-attribute 'default nil :font "Hack Nerd Font Mono")
@@ -63,15 +84,6 @@ There are two things you can do about this warning:
 ;; yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
-
-;; auto-complete
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
-;; set the trigger key so that it can work together with yasnippet on tab key, if the word exists in yasnippet,
-;; pressing tab will cause yasnippet to activate, otherwise auto-complete will
-(ac-set-trigger-key "TAB")
-(ac-set-trigger-key "<tab>")
 
 ;; erc
 (require 'erc)
