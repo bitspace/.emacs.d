@@ -24,8 +24,8 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 ;; macos native ls doesn't support dired. Also set macos-specific path info. See http://ergoemacs.org/emacs/emacs_env_var_paths.html
-(when (IS-MAC)
-  (setq dired-use-ls-dired nil))
+(cond (IS-MAC
+       (setq dired-use-ls-dired nil)))
 
 ;; Package.el. This method of toggling between http and https courtesy of https://melpa.org/#/getting-started
 ;; This makes it more portable, as it seems the https link doesn't work in Emacs on Windows.
