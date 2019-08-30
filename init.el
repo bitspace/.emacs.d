@@ -149,5 +149,11 @@ There are two things you can do about this warning:
 (require 'helm-system-packages)
 
 ;; rust
+(add-to-list 'load-path "~/.emacs.d/lisp/rust-mode/")
 (autoload 'rust-mode "rust-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+
+;; golang
+(add-to-list 'load-path "~/.emacs.d/lisp/go-mode/")
+(autoload 'go-mode "go-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
