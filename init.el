@@ -147,3 +147,7 @@ There are two things you can do about this warning:
 
 ;; helm-system-packages: helm-based interface to OS package manager
 (require 'helm-system-packages)
+
+;; rust
+(autoload 'rust-mode "rust-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
